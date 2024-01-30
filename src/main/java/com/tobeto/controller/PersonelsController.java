@@ -25,15 +25,18 @@ public class PersonelsController {
 	private ModelMapperService modelMapperService;
 
 	@PostMapping
-	public void add(@RequestBody CreatePersonelRequest createPersonelRequest) {
-		Personel personel = modelMapperService.forRequest().map(createPersonelRequest, Personel.class);
+	public void add(@RequestBody CreatePersonelRequest request) {
+		Personel personel = modelMapperService.forRequest().map(request, Personel.class);
 		personelService.add(personel);
 		System.out.println(personel.getId());
 	}
 
 	@GetMapping
-	public List<GetAllPersonelResponse> getAll(GetAllPersonelResponse response) {
-		return personelService.getAll(response);
+//	@Transactional
+	public List<GetAllPersonelResponse> getAll() {
+		List<Personel> personeller = personelService.getAll();
+		return personeller.stream()
+				.map(personel -> modelMapperService.forResponse().map(personel, GetAllPersonelResponse.class)).toList();
 	}
 }
 

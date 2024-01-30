@@ -2,9 +2,7 @@ package com.tobeto.entity;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -21,8 +19,8 @@ public class Personel extends EntityBase {
 	private String adi;
 	private String soyadi;
 	private String email;
-	@OneToMany(mappedBy = "personel", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "personel")
 	private List<Adres> adresler;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Bolum bolum;
 }
