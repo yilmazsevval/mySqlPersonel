@@ -12,13 +12,13 @@ public class ModelMapperManager implements ModelMapperService {
 
 	@Override
 	public ModelMapper forRequest() {
-		this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+		this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
 		return this.modelMapper;
 	}
 
 	@Override
 	public ModelMapper forResponse() {
-		this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
+		this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 		return this.modelMapper;
 	}
 

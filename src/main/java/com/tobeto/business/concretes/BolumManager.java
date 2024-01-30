@@ -1,5 +1,7 @@
 package com.tobeto.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,11 @@ public class BolumManager implements BolumService {
 	public void add(Bolum bolum) {
 		this.bolumRepository.save(bolum);
 
+	}
+
+	@Override
+	public List<Bolum> getAll() {
+		return bolumRepository.findAll();
 	}
 
 }

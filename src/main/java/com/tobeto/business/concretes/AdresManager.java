@@ -1,5 +1,7 @@
 package com.tobeto.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,11 @@ public class AdresManager implements AdresService {
 	public void add(Adres adres) {
 		this.adresRepository.save(adres);
 
+	}
+
+	@Override
+	public List<Adres> getAll() {
+		return adresRepository.findAll();
 	}
 
 }
